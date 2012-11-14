@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/commons-dbcp.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/commons-logging-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/commons-pool.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/hsqldb.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/javassist-3.12.0.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/javax.persistence.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/jsf-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/jsf-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/jstl-api-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/jstl-impl-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/log4j-1.2.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/log4j-over-slf4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/mysql-connector-java-5.0.3-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/postgresql-9.0-801.jdbc3.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/postgresql-9.1-901.jdbc3.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/primefaces-3.0-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/primefaces-3.3-SNAPSHOT-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/slf4j-simple-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/Projet_BCT/WebContent/WEB-INF/lib/spring.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/mariem/Desktop/troisième_annéee_ingénieura/J2EE/TPs/tpjpa/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry exported="true" kind="lib" path="D:/workspace/projetTutore/lib/postgresql-9.1-901.jdbc3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
