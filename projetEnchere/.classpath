@@ -16,5 +16,7 @@
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="/Vente_Enchere"/>
+	<classpathentry kind="con" path="org.eclipse.datatools.connectivity.jdt.DRIVERLIBRARY/MySQL JDBC Driver"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
