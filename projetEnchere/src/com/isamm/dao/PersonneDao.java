@@ -1,14 +1,14 @@
 package com.isamm.dao;
 
 import javax.persistence.EntityManager;
-import com.isamm.dao.*;
-import com.isamm.model.Produit;
 
+import com.isamm.model.*;
 
-public class ProduitDao {
+public class PersonneDao {
 
+	
 	public static EntityManager em;
-	public static void insererProduit(Produit p){
+	public static void insererPersonne(Personne p){
 		
 		em.getTransaction().begin();
 		em.persist(p);
@@ -16,16 +16,18 @@ public class ProduitDao {
 		
 	}
 	
-	public static void modifierProduit(Produit p){
+	public static void modifierPersonne(Personne p){
 		
 		try{
 		    em.getTransaction().begin();
-		    Produit produit = em.find(Produit.class, p.getIdProduit());
-		    produit.setDescription(p.getDescription()); 
-		    produit.setLibelle(p.getLibelle());
-		    produit.setQuantite_stock(p.getQuantite_stock());
+		    Personne personne = em.find(Personne.class, p.getIdPersonne());
+		    personne.setLogin(p.getLogin()); 
+		    personne.setPwd(p.getPwd());
+		    personne.setAdresse(p.getAdresse());
+		    personne.setMail(p.getMail());
 		    em.getTransaction().commit();
-		  } finally {
+		  }
+		finally {
 		    em.close();
 		    
 		  }
@@ -33,7 +35,7 @@ public class ProduitDao {
 	}
 	
 	
-	public static void supprimerProduit(Produit p){
+	public static void supprimerPersonne(Personne p){
 		
 		try{
 		    em.getTransaction().begin();
@@ -46,4 +48,6 @@ public class ProduitDao {
 		
 	}
 
+	
+	
 }

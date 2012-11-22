@@ -33,22 +33,41 @@ public class ProduitDaoImpl {
 	public void tearDown() throws Exception {
 	}
 	
-	public final void insererProduit() {
+	public final void insererProduit(Produit p) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
 		ProduitDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
-		Produit p = new Produit();
-		p.setLibelle("xxxxx");
-		p.setDescription("description");
-		p.setQuantite_stock(20);
+		
 		ProduitDao.insererProduit(p);
 		assertNotNull(p);
 	}
 	
-	
+	public final void modifierProduit(Produit p) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		ProduitDao.em  = emf.createEntityManager();
+		
+		System.out.println("entity manager créé");
+		
+		
+		ProduitDao.modifierProduit(p);
+		assertNotNull(p);
+		}
+		
+		public final void supprimerProduit(Produit p) {
+			
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			System.out.println("entity manager créé");
+		
+			
+			ProduitDao.supprimerProduit(p);
+			assertNotNull(p);
+			}
 	
 	
 
