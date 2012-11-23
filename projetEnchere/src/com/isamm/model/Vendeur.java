@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
  * Entity implementation class for Entity: Vendeur
  *
@@ -36,7 +38,7 @@ public class Vendeur extends Personne implements Serializable {
 	public List<Produit> getListeProduits() {
 		return listeProduits;
 	}
-
+	@Required
 	public void setListeProduits(List<Produit> listeProduits) {
 		this.listeProduits = listeProduits;
 	}

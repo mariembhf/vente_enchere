@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
  * Entity implementation class for Entity: At_Enchere
  *
@@ -48,7 +50,7 @@ public class At_Enchere implements Serializable {
 		return idVente_Enchere;
 	}
 
-
+	@Required
 	public void setIdVente_Enchere(int idVente_Enchere) {
 		this.idVente_Enchere = idVente_Enchere;
 	}
@@ -58,7 +60,7 @@ public class At_Enchere implements Serializable {
 		return prix_propose;
 	}
 
-
+	@Required
 	public void setPrix_propose(int prix_propose) {
 		this.prix_propose = prix_propose;
 	}
@@ -78,17 +80,17 @@ public class At_Enchere implements Serializable {
 		return idProduit;
 	}
 
-
+	@Required
 	public void setIdProduit(int idProduit) {
 		this.idProduit = idProduit;
 	}
 
-
+	
 	public int getIdEnchereur() {
 		return idEnchereur;
 	}
 
-
+	@Required
 	public void setIdEnchereur(int idEnchereur) {
 		this.idEnchereur = idEnchereur;
 	}

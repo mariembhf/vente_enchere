@@ -3,6 +3,8 @@ package com.isamm.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
  * Entity implementation class for Entity: Produit
  *
@@ -70,7 +72,7 @@ public class Produit implements Serializable {
 	}
 
 
-
+	@Required
 	public void setQuantite_stock(int quantite_stock) {
 		this.quantite_stock = quantite_stock;
 	}

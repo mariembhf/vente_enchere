@@ -3,6 +3,8 @@ package com.isamm.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Required;
+
 /**
  * Entity implementation class for Entity: Personne
  *
@@ -47,12 +49,14 @@ public class Personne implements Serializable {
 		public String getLogin() {
 			return login;
 		}
+		@Required
 		public void setLogin(String login) {
 			this.login = login;
 		}
 		public String getPwd() {
 			return pwd;
 		}
+		@Required
 		public void setPwd(String pwd) {
 			this.pwd = pwd;
 		}
