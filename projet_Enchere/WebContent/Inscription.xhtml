@@ -17,23 +17,25 @@
         	<h:panelGrid id="loginPanel" columns="2" bgcolor="White">
 
 						<h:outputText  value="Nom d'utilisateur" />
-						<p:inputText id="username"></p:inputText>
-
+						<p:inputText id="username" value="#{personne.nom}"></p:inputText>
+						
+						<h:outputText  value="Login" />
+						<p:inputText id="userlogin" value="#{personne.login}"></p:inputText>
 						
 
 						<h:outputText value="Mot de passe" />
-						<p:password id="password"   feedback="true"></p:password>
+						<p:password id="password" value="#{personne.pwd}"  feedback="true"></p:password>
 
 						
 						<h:outputText value="Adresse" />
-						<p:inputText id="adresse"></p:inputText>
+						<p:inputText id="adresse" value="#{personne.adresse}"></p:inputText>
 						
 						<h:outputText value="Mail" />
-						<p:inputText id="mail"></p:inputText>
+						<p:inputText id="mail" value="#{personne.mail}"></p:inputText>
 						
 
 						<p:spacer></p:spacer>
-						<h:commandButton value="inscription" ></h:commandButton>
+						<h:commandButton value="inscription" action="#{personne.inscrir}" ></h:commandButton>
 
 					</h:panelGrid>
            

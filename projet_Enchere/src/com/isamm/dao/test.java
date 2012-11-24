@@ -1,6 +1,6 @@
 package com.isamm.dao;
 import com.isamm.model.*;
-import com.isamm.dao.impl.ProduitDaoImpl;
+import com.isamm.dao.impl.*;
 
 public class test {
 	
@@ -16,6 +16,25 @@ public class test {
 		p.setQuantite_stock(5);
 		pdi.insererProduit(p);
 		System.out.println("après l'ajout");
+		
+		
+		Personne per=new Personne();
+		per.setLogin("mar");
+		per.setPwd("0000");
+		per.setNom("mariem");
+		
+		
+		try
+		{
+			PersonneDaoImpl perdi=new PersonneDaoImpl();
+			perdi.insererPersonne(per);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
+		
 	}
 
 }

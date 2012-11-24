@@ -2,8 +2,13 @@ package com.isamm.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import org.springframework.beans.factory.annotation.Required;
+
+import com.isamm.dao.PersonneDao;
+import com.isamm.dao.impl.PersonneDaoImpl;
 
 /**
  * Entity implementation class for Entity: Personne
@@ -14,7 +19,8 @@ import org.springframework.beans.factory.annotation.Required;
 
 
 
-
+@ManagedBean(name="personne")
+@SessionScoped
 
 public class Personne implements Serializable {
 
@@ -78,7 +84,29 @@ public class Personne implements Serializable {
 			this.adresse = adresse;
 		}
 		
-		
+		public String inscrir()
+		{
+			Personne p=new Personne();
+			p.setLogin(this.getLogin());
+			p.setPwd(this.getPwd());
+			p.setNom(this.getNom());
+			p.setAdresse(this.getAdresse());
+			p.setMail(this.getMail());
+			
+			try
+			{
+				PersonneDaoImpl pdi=new PersonneDaoImpl();
+				pdi.insererPersonne(p);
+				return "success";
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.toString());
+				return "failure";
+			}
+			
+			
+		}
 		
 
 	}

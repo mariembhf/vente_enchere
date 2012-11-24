@@ -17,7 +17,7 @@ public class CategorieDaoImpl {
 	public final void insererCategorie(Categorie c) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		ProduitDao.em  = emf.createEntityManager();
+		CategorieDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
@@ -29,20 +29,20 @@ public class CategorieDaoImpl {
 
 	public final void modifierCategorie(Categorie c) {
 	
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-	ProduitDao.em  = emf.createEntityManager();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		CategorieDao.em  = emf.createEntityManager();
 	
-	System.out.println("entity manager créé");
+		System.out.println("entity manager créé");
 	
 	
-	CategorieDao.modifierCategorie(c);
-	assertNotNull(c);
+		CategorieDao.modifierCategorie(c);
+		assertNotNull(c);
 	}
 	
 	public final void supprimerCategorie(Categorie c) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		ProduitDao.em  = emf.createEntityManager();
+		CategorieDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 	

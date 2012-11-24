@@ -15,7 +15,7 @@ public class At_EnchereDaoImpl {
 public final void insererAt_Enchere() {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		ProduitDao.em  = emf.createEntityManager();
+		At_EnchereDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
@@ -28,20 +28,20 @@ public final void insererAt_Enchere() {
 
 	public final void modifierAt_Enchere(At_Enchere ae) {
 	
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-	ProduitDao.em  = emf.createEntityManager();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		At_EnchereDao.em  = emf.createEntityManager();
 	
-	System.out.println("entity manager créé");
+		System.out.println("entity manager créé");
 	
 	
-	At_EnchereDao.modifierAt_Enchere(ae);
-	assertNotNull(ae);
+		At_EnchereDao.modifierAt_Enchere(ae);
+		assertNotNull(ae);
 	}
 	
 	public final void supprimerAt_Enchere(At_Enchere ae) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		ProduitDao.em  = emf.createEntityManager();
+		At_EnchereDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 	
