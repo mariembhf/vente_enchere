@@ -11,6 +11,11 @@ import org.springframework.beans.factory.annotation.Required;
  */
 @Entity
 
+
+
+
+
+
 public class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
