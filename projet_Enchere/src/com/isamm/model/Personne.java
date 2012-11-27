@@ -108,5 +108,29 @@ public class Personne implements Serializable {
 			
 		}
 		
+		
+		public String seconnecter()
+		{
+			Personne p=new Personne();
+			p.setLogin(this.getLogin());
+			p.setPwd(this.getPwd());
+			
+			
+			try
+			{
+				PersonneDaoImpl pdi=new PersonneDaoImpl();
+				pdi.trouverPersonne(p);
+				System.out.println("Personne trouvée");
+				return "success";
+			}
+			catch(Exception e)
+			{
+				System.out.println("Personne non trouvée");
+				System.out.println(e.toString());
+				return "failure";
+			}
+			
+			
+		}
 
 	}

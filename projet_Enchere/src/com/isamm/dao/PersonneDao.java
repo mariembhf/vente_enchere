@@ -1,6 +1,9 @@
 package com.isamm.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.isamm.model.*;
 
@@ -13,6 +16,23 @@ public class PersonneDao {
 		em.getTransaction().begin();
 		em.persist(p);
 		em.getTransaction().commit();
+		
+	}
+	
+	public static Personne trouverPersonne(Personne p){
+		
+		em.getTransaction().begin();
+		
+		em.persist(p);
+		em.getTransaction().commit();
+		
+		
+		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Personne.class);
+		//query.setParameter(1, "lePrenom2");
+		Personne personne = (Personne) query.getSingleResult();
+		System.out.println(personne);
+		
+		return personne;
 		
 	}
 	

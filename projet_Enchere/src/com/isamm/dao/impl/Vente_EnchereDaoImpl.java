@@ -1,6 +1,6 @@
 package com.isamm.dao.impl;
 
-import static org.junit.Assert.assertNotNull;
+
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,7 +21,7 @@ public class Vente_EnchereDaoImpl {
 		
 		
 		Vente_EnchereDao.insererVente_Enchere(ve);
-		assertNotNull(ve);
+		
 	}
 
 
@@ -34,7 +34,7 @@ public class Vente_EnchereDaoImpl {
 	
 	
 		Vente_EnchereDao.modifierVente_Enchere(ve);
-		assertNotNull(ve);
+		
 	}
 	
 	public final void supprimerVente_Enchere(Vente_Enchere ve) {
@@ -46,7 +46,7 @@ public class Vente_EnchereDaoImpl {
 	
 		
 		Vente_EnchereDao.supprimerVente_Enchere(ve);
-		assertNotNull(ve);
+		
 		}
 
 

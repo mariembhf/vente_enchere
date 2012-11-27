@@ -1,6 +1,6 @@
 package com.isamm.dao.impl;
 
-import static org.junit.Assert.assertNotNull;
+
 
 import java.util.Date;
 
@@ -22,7 +22,7 @@ public final void insererAt_Enchere() {
 		At_Enchere ae = new At_Enchere();
 		ae.setDate(new Date());
 		At_EnchereDao.insererAt_Enchere(ae);
-		assertNotNull(ae);
+		
 	}
 
 
@@ -35,7 +35,7 @@ public final void insererAt_Enchere() {
 	
 	
 		At_EnchereDao.modifierAt_Enchere(ae);
-		assertNotNull(ae);
+		
 	}
 	
 	public final void supprimerAt_Enchere(At_Enchere ae) {
@@ -47,7 +47,7 @@ public final void insererAt_Enchere() {
 	
 		
 		At_EnchereDao.supprimerAt_Enchere(ae);
-		assertNotNull(ae);
+		
 		}
 
 }

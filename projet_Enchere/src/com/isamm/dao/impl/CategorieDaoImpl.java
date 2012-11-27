@@ -1,6 +1,6 @@
 package com.isamm.dao.impl;
 
-import static org.junit.Assert.assertNotNull;
+
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class CategorieDaoImpl {
 		
 		
 		CategorieDao.insererCategorie(c);
-		assertNotNull(c);
+		
 	}
 
 
@@ -36,7 +36,7 @@ public class CategorieDaoImpl {
 	
 	
 		CategorieDao.modifierCategorie(c);
-		assertNotNull(c);
+		
 	}
 	
 	public final void supprimerCategorie(Categorie c) {
@@ -48,7 +48,7 @@ public class CategorieDaoImpl {
 	
 		
 		CategorieDao.supprimerCategorie(c);
-		assertNotNull(c);
+		
 		}
 
 }
