@@ -7,11 +7,12 @@ import javax.persistence.Query;
 
 import com.isamm.model.*;
 
-public class PersonneDao {
+public class EnchereurDao {
 
 	
+	
 	public static EntityManager em;
-	public static void insererPersonne(Personne p){
+	public static void insererEnchereur(Enchereur p){
 		
 		em.getTransaction().begin();
 		em.persist(p);
@@ -19,29 +20,24 @@ public class PersonneDao {
 		
 	}
 	
-	public static List <Personne> trouverPersonne(Personne p){
-		
-		em.getTransaction().begin();
-		
-		em.persist(p);
-		em.getTransaction().commit();
+	public static List <Enchereur> trouverEnchereur(Enchereur p){
 		
 		
-		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Personne.class);
+		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Vendeur.class);
 		System.out.println(query.toString());
 		//query.setParameter(1, "lePrenom2");
-		List <Personne> personne =  query.getResultList();
+		List <Enchereur> personne =  query.getResultList();
 		System.out.println(personne);
 		
 		return personne;
 		
 	}
 	
-	public static void modifierPersonne(Personne p){
+	public static void modifierEnchereur(Enchereur p){
 		
 		try{
 		    em.getTransaction().begin();
-		    Personne personne = em.find(Personne.class, p.getIdPersonne());
+		    Enchereur personne = em.find(Enchereur.class, p.getIdPersonne());
 		    personne.setLogin(p.getLogin()); 
 		    personne.setPwd(p.getPwd());
 		    personne.setAdresse(p.getAdresse());
@@ -56,7 +52,7 @@ public class PersonneDao {
 	}
 	
 	
-	public static void supprimerPersonne(Personne p){
+	public static void supprimerEnchereur(Enchereur p){
 		
 		try{
 		    em.getTransaction().begin();
@@ -68,7 +64,6 @@ public class PersonneDao {
 		  }
 		
 	}
-
 	
 	
 }

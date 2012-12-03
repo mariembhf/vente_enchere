@@ -1,65 +1,57 @@
 package com.isamm.dao.impl;
 
-
-
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-
-import com.isamm.dao.*;
 import com.isamm.dao.*;
 import com.isamm.model.*;
 
-public class PersonneDaoImpl {
+public class VendeurDaoImpl {
 	
-	
-	
-	
-	public final void insererPersonne(Personne p) {
+	public final void insererVendeur(Vendeur p) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		VendeurDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
 		
-		PersonneDao.insererPersonne(p);
+		VendeurDao.insererVendeur(p);
 		
 	}
 	
-	public final List <Personne> trouverPersonne(Personne p)
+	public final List <Vendeur> trouverVendeur(Vendeur p)
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		VendeurDao.em  = emf.createEntityManager();
 		
-		return PersonneDao.trouverPersonne(p);
+		return VendeurDao.trouverVendeur(p);
 	}
 
 
-	public final void modifierPersonne(Personne p) {
+	public final void modifierVendeur(Vendeur p) {
 	
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		VendeurDao.em  = emf.createEntityManager();
 	
 		System.out.println("entity manager créé");
 	
 	
-		PersonneDao.modifierPersonne(p);
+		VendeurDao.modifierVendeur(p);
 		
 	}
 	
-	public final void supprimerPersonne(Personne p) {
+	public final void supprimerVendeur(Vendeur p) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		VendeurDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 	
 		
-		PersonneDao.supprimerPersonne(p);
+		VendeurDao.supprimerVendeur(p);
 		
 	}
 

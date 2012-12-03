@@ -1,6 +1,9 @@
 package com.isamm.model;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,6 +25,7 @@ import com.isamm.dao.impl.PersonneDaoImpl;
 @ManagedBean(name="personne")
 @SessionScoped
 
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -115,20 +119,34 @@ public class Personne implements Serializable {
 			p.setLogin(this.getLogin());
 			p.setPwd(this.getPwd());
 			
-			
-			try
-			{
+			boolean trouve=false;
 				PersonneDaoImpl pdi=new PersonneDaoImpl();
-				pdi.trouverPersonne(p);
-				System.out.println("Personne trouvée");
-				return "success";
-			}
-			catch(Exception e)
-			{
-				System.out.println("Personne non trouvée");
-				System.out.println(e.toString());
-				return "failure";
-			}
+				List <Personne> listpersonne = pdi.trouverPersonne(p);
+				Iterator it=listpersonne.iterator();
+				while(it.hasNext())
+				{
+					Personne per=(Personne)it.next();
+					if((per.getLogin()==this.getLogin())&&(per.getPwd()==this.getPwd()))
+					{
+						System.out.println("Personne trouvée");
+						trouve=true;
+					}
+					else
+					{
+						System.out.println("Personne non trouvée");
+						
+					}
+				}
+				
+				if(trouve==true)
+				{
+					return "success";
+				}
+				else
+				{
+					return "failure";
+				}
+				
 			
 			
 		}

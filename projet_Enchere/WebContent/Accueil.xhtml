@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Votre site gratuit d'enchères</title>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+	
+		<p:layoutUnit position="top" height="50">
+		 <h:form>
+			<p:breadCrumb>
+			
+			 <p:menuitem value="Acheter" id="Acheter" action="#{redirection.sideBarAction}"  update=":cent" >
+             <f:param id="page1ParamId" name="pageViewId" value="Acheter"/>
+             </p:menuitem>
+             
+              <p:menuitem value="Vendre" id="Vendre" action="#{redirection.sideBarAction}"  update=":cent" >
+             <f:param id="page2ParamId" name="pageViewId" value="Vendre"/>
+             </p:menuitem>
+             
+             <p:menuitem value="Mon compte" id="Compte" action="#{redirection.sideBarAction}"  update=":cent" >
+             <f:param id="page3ParamId" name="pageViewId" value="Compte"/>
+             </p:menuitem>
+				
+			  <p:menuitem value="Aide" id="Aide" action="#{redirection.sideBarAction}"  update=":cent" >
+             <f:param id="page4ParamId" name="pageViewId" value="Aide"/>
+             </p:menuitem>
+				
+			  <p:menuitem value="Rechercher" id="Rechercher" action="#{redirection.sideBarAction}"  update=":cent" >
+             <f:param id="page5ParamId" name="pageViewId" value="Rechercher"/>
+             </p:menuitem>
+				
+
+			</p:breadCrumb>
+			</h:form>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="left" width="180" header="Menu"
+			collapsible="true">
+			<h:form>
+			<p:menu style="width: 98%">
+				<p:submenu label="Arts et Antiquités">
+					<p:menuitem value="Arts"  />
+					<p:menuitem value="Antiquités" />
+				</p:submenu>
+				<p:submenu label="Automobiles, véhicules">
+					<p:menuitem value="Automobiles" />
+					<p:menuitem value="Véhicules"  />
+					</p:submenu>
+				<p:submenu label="Beauté, bien-être">
+				
+					<p:menuitem value="Produits Beauté " />
+				</p:submenu>
+			</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		
+		<p:layoutUnit id="cent" header="" position="center" dynamic="true" autoUpdate="true" scrollable="true">
+			<h:form>
+				<ui:include id="cent_include" src="#{redirection.includedPage}" />
+			</h:form>
+		</p:layoutUnit>
+		
+	</p:layout>
+</h:body>
+</html>

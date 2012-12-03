@@ -1,66 +1,60 @@
 package com.isamm.dao.impl;
 
-
-
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-
-import com.isamm.dao.*;
 import com.isamm.dao.*;
 import com.isamm.model.*;
 
-public class PersonneDaoImpl {
+public class AdministrateurDaoImpl {
 	
 	
-	
-	
-	public final void insererPersonne(Personne p) {
+public final void insererAdministrateur(Administrateur p) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		AdministrateurDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
 		
-		PersonneDao.insererPersonne(p);
+		AdministrateurDao.insererAdministrateur(p);
 		
 	}
 	
-	public final List <Personne> trouverPersonne(Personne p)
+	public final List <Administrateur> trouverAdministrateur(Administrateur p)
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		AdministrateurDao.em  = emf.createEntityManager();
 		
-		return PersonneDao.trouverPersonne(p);
+		return AdministrateurDao.trouverAdministrateur(p);
 	}
 
 
-	public final void modifierPersonne(Personne p) {
+	public final void modifierAdministrateur(Administrateur p) {
 	
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		AdministrateurDao.em  = emf.createEntityManager();
 	
 		System.out.println("entity manager créé");
 	
 	
-		PersonneDao.modifierPersonne(p);
+		AdministrateurDao.modifierAdministrateur(p);
 		
 	}
 	
-	public final void supprimerPersonne(Personne p) {
+	public final void supprimerAdministrateur(Administrateur p) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
-		PersonneDao.em  = emf.createEntityManager();
+		AdministrateurDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 	
 		
-		PersonneDao.supprimerPersonne(p);
+		AdministrateurDao.supprimerAdministrateur(p);
 		
 	}
+
 
 }

@@ -7,11 +7,11 @@ import javax.persistence.Query;
 
 import com.isamm.model.*;
 
-public class PersonneDao {
 
+public class AdministrateurDao {
 	
 	public static EntityManager em;
-	public static void insererPersonne(Personne p){
+	public static void insererAdministrateur(Administrateur p){
 		
 		em.getTransaction().begin();
 		em.persist(p);
@@ -19,29 +19,24 @@ public class PersonneDao {
 		
 	}
 	
-	public static List <Personne> trouverPersonne(Personne p){
-		
-		em.getTransaction().begin();
-		
-		em.persist(p);
-		em.getTransaction().commit();
+	public static List <Administrateur> trouverAdministrateur(Administrateur p){
 		
 		
-		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Personne.class);
+		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Vendeur.class);
 		System.out.println(query.toString());
 		//query.setParameter(1, "lePrenom2");
-		List <Personne> personne =  query.getResultList();
+		List <Administrateur> personne =  query.getResultList();
 		System.out.println(personne);
 		
 		return personne;
 		
 	}
 	
-	public static void modifierPersonne(Personne p){
+	public static void modifierAdministrateur(Administrateur p){
 		
 		try{
 		    em.getTransaction().begin();
-		    Personne personne = em.find(Personne.class, p.getIdPersonne());
+		    Administrateur personne = em.find(Administrateur.class, p.getIdPersonne());
 		    personne.setLogin(p.getLogin()); 
 		    personne.setPwd(p.getPwd());
 		    personne.setAdresse(p.getAdresse());
@@ -56,7 +51,7 @@ public class PersonneDao {
 	}
 	
 	
-	public static void supprimerPersonne(Personne p){
+	public static void supprimerAdministrateur(Administrateur p){
 		
 		try{
 		    em.getTransaction().begin();
@@ -68,7 +63,6 @@ public class PersonneDao {
 		  }
 		
 	}
+	
 
-	
-	
 }
