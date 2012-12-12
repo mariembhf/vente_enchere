@@ -2,13 +2,15 @@ package com.isamm.dao.impl;
 
 
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 
 
 import com.isamm.dao.*;
-import com.isamm.model.*;
+import com.isamm.domain.*;
 
 
 public class ProduitDaoImpl {
@@ -52,6 +54,16 @@ public class ProduitDaoImpl {
 			
 			}
 	
-	
+		public final List<Produit> listProduit() {
+			
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			System.out.println("entity manager créé");
+			
+			
+			return ProduitDao.listProduits();
+			
+		}
 
 }

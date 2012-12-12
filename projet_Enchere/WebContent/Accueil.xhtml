@@ -15,6 +15,9 @@
 		 <h:form>
 			<p:breadCrumb>
 			
+			 <p:menuitem value="vide" id="vide"   update=":cent" >
+             </p:menuitem>
+             
 			 <p:menuitem value="Acheter" id="Acheter" action="#{redirection.sideBarAction}"  update=":cent" >
              <f:param id="page1ParamId" name="pageViewId" value="Acheter"/>
              </p:menuitem>
@@ -61,11 +64,11 @@
 		</p:layoutUnit>
 		
 		<p:layoutUnit id="cent" header="" position="center" dynamic="true" autoUpdate="true" scrollable="true">
-			<h:form>
+			
 				<ui:include id="cent_include" src="#{redirection.includedPage}" />
-			</h:form>
+			
 		</p:layoutUnit>
-		
+		 
 	</p:layout>
 </h:body>
 </html>

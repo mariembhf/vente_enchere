@@ -2,7 +2,7 @@ package com.isamm.dao;
 
 import javax.persistence.EntityManager;
 
-import com.isamm.model.*;
+import com.isamm.domain.*;
 
 public class CategorieDao {
 	

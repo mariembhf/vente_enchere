@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.isamm.model.*;
+import com.isamm.domain.*;
 
 
 public class AdministrateurDao {

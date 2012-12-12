@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import com.isamm.model.*;
+import com.isamm.domain.*;
 
 public class PersonneDao {
 
@@ -20,11 +20,6 @@ public class PersonneDao {
 	}
 	
 	public static List <Personne> trouverPersonne(Personne p){
-		
-		em.getTransaction().begin();
-		
-		em.persist(p);
-		em.getTransaction().commit();
 		
 		
 		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Personne.class);

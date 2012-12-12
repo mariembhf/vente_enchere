@@ -4,9 +4,12 @@ package com.isamm.presentation;
 import java.io.Serializable;
 
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import com.isamm.domain.*;
 
 @ManagedBean(name="redirection")
 @SessionScoped
@@ -67,4 +70,44 @@ this.includedPage = includedPage;
 public String getOnclickFunction() {
     return "#{redirection.includedPage}" ;
 }
+
+
+//methode pour la connexion d'un utilisateur
+public String seconnecter(Personne p) {
+	
+	FacesContext context = FacesContext.getCurrentInstance();
+	String selectedPageViewId =context.getExternalContext().getRequestParameterMap().get("pageViewId");
+	
+	System.out.println("login = "+p.getLogin().toString());
+	System.out.println("mot de passe = "+p.getPwd().toString());
+	String res = p.seconnecter();
+	System.out.println("au début de se connecter ");
+	
+	if(res.equals("success"))
+	{
+		  //this.setIncludedPage("/Accueil_secondaire.xhtml");
+		  //this.includedPage="/Bienvenue.xhtml" ;
+		  System.out.println("set include à bienvenue");
+		  System.out.println(this.includedPage.toString());
+	}
+	else
+	{
+		  //this.setIncludedPage("/Authentification.xhtml") ;
+		  System.out.println("set include à authentification ");
+		  System.out.println(this.includedPage.toString());
+		  
+		  
+		  context.addMessage("auth:userlogin", new FacesMessage("Login ou mot de passe incorrect !!"));
+		  
+		  
+	}
+	
+	return this.includedPage;
+   
+}
+
+
+
+
+
 }

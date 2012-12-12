@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 
 import com.isamm.dao.*;
-import com.isamm.model.*;
+import com.isamm.domain.*;
 
 
 public class EnchereurDaoImpl {

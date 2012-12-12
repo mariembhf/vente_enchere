@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="top" height="120" styleClass="bct_style">
+			<h:form id="rightform">
+				<h:outputText value="Top"></h:outputText>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="left" width="190" header="Menu"
+			collapsible="true">
+			<h:form id="leftform">
+				
+				<h:outputText value="Left" ></h:outputText>
+				
+			</h:form>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit id="cent" header="" position="center" dynamic="true" autoUpdate="true" scrollable="true">
+
+			<h:form>
+			
+				<h:outputText value="Center" ></h:outputText>
+				
+				
+				
+				<h:commandButton value="afficher" action="#{galleriaBean.listImages}" update=":gallerie"></h:commandButton>
+				
+				<p:galleria id="gallerie" value="#{galleriaBean.images}" var="image">  
+   					 
+   					 <p:graphicImage url="/images/#{image}" value="/images/#{image}"  />
+				
+				</p:galleria>  
+				
+			</h:form>
+
+
+		</p:layoutUnit>
+	</p:layout>
+
+
+
+</h:body>
+</html>

@@ -1,6 +1,6 @@
 package com.isamm.dao;
-import com.isamm.model.*;
 import com.isamm.dao.impl.*;
+import com.isamm.domain.*;
 
 public class test {
 	
@@ -19,9 +19,9 @@ public class test {
 		
 		
 		Personne per=new Personne();
-		per.setLogin("mar");
+		per.setLogin("dali");
 		per.setPwd("0000");
-		per.setNom("mariem");
+		per.setNom("dali");
 		
 		
 		try

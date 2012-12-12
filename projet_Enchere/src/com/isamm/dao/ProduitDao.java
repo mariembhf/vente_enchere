@@ -1,8 +1,13 @@
 package com.isamm.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import com.isamm.dao.*;
-import com.isamm.model.Produit;
+import com.isamm.domain.Personne;
+import com.isamm.domain.Produit;
 
 
 public class ProduitDao {
@@ -45,5 +50,17 @@ public class ProduitDao {
 		  }
 		
 	}
+	
+	public static List<Produit> listProduits()
+	{
+		Query query = em.createNativeQuery("select * from Produit p ",Produit.class);
+		System.out.println(query.toString());
+		//query.setParameter(1, "lePrenom2");
+		List <Produit> produit =  query.getResultList();
+		//System.out.println(personne);
+		
+		return produit;
+	}
+	
 
 }

@@ -2,30 +2,76 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<body>
 
-      xmlns:h="http://java.sun.com/jsf/html"
+<h:form id="auth">
+  <p:panel id="panel" header="Ouvrir une session" style="margin-bottom:10px;"> 
+  	<h:panelGrid id ="panelgrid" columns="1" cellpadding="5">
+			
   
-      xmlns:f="http://java.sun.com/jsf/core"
+	<center>
+		<h:outputText value="Login" /> 
+		<p:inputText id="user" value="#{personne.login}"></p:inputText>
+	
+		<h:outputText value="Mot de passe" />
+		<p:password id="pwd" value="#{personne.pwd}" feedback="true"></p:password> 
+		<p:spacer></p:spacer>
   
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+ 	
+		<h:commandButton value="connexion" action="#{redirection.seconnecter(personne)}"></h:commandButton>
   
-      xmlns:p="http://primefaces.prime.com.tr/ui">
 
+		<p:commandLink id="insc" style="margin-right:20px ;color: RGB(72,120,184)"  onclick="dlg1.show();" >
+			<h:outputText value="Pas encore inscrit?" />
+		</p:commandLink>
 
-        <h:form id="auth">
+	</center>
+	
+	</h:panelGrid>
+	</p:panel>
+	
+</h:form>
+
+<h:form>
+	<center>	 
+	<p:dialog id="modalDialog"  draggable="false" resizable="false" header="Inscription" widgetVar="dlg1" height="220" width="500">
+	
         
-        		<h:outputText  value="Login" />
-				<p:inputText id="userlogin" value="#{personne.login}"></p:inputText>
-				
-				<p:spacer></p:spacer>	
-				<br></br>
+        	<h:panelGrid id="loginPanel" columns="2" bgcolor="White">
 
-				<h:outputText value="Mot de passe" />
-				<p:password id="password" value="#{personne.pwd}"  feedback="true"></p:password>
-				
-				<p:spacer></p:spacer>
-				<h:commandButton value="connexion" action="#{personne.seconnecter}" ></h:commandButton>
+						<h:outputText  value="Nom d'utilisateur" />
+						<p:inputText id="name" value="#{personne.nom}"></p:inputText>
+						
+						<h:outputText  value="Login" />
+						<p:inputText id="login" value="#{personne.login}"></p:inputText>
+						
+
+						<h:outputText value="Mot de passe" />
+						<p:password id="password" value="#{personne.pwd}"  feedback="true"></p:password>
+
+						
+						<h:outputText value="Adresse" />
+						<p:inputText id="adresse" value="#{personne.adresse}"></p:inputText>
+						
+						<h:outputText value="Mail" />
+						<p:inputText id="mail" value="#{personne.mail}"></p:inputText>
+						
+
+						<p:spacer></p:spacer>
+						<h:commandButton value="inscription" action="#{personne.inscrir}" ></h:commandButton>
+
+					</h:panelGrid>
            
-        </h:form>
-    
+      
+		</p:dialog>
+		
+		
+		</center>
+
+</h:form>
+</body>
 </html>
