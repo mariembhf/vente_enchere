@@ -62,5 +62,18 @@ public class PersonneDaoImpl {
 		PersonneDao.supprimerPersonne(p);
 		
 	}
+	
+	
+	public final void ajouterProduitAVendeur(int idPersonne,Produit produit) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		PersonneDao.em  = emf.createEntityManager();
+		
+		System.out.println("entity manager créé");
+	
+		
+		PersonneDao.ajouterProduitAPersonne(idPersonne, produit);
+		
+	}
 
 }

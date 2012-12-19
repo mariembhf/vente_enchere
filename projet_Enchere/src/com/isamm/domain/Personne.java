@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Required;
 import com.isamm.dao.PersonneDao;
 import com.isamm.dao.impl.PersonneDaoImpl;
 
+
 /**
  * Entity implementation class for Entity: Personne
  *
@@ -29,6 +30,7 @@ import com.isamm.dao.impl.PersonneDaoImpl;
 public class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	public static int idSession = 1;
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,7 +42,10 @@ public class Personne implements Serializable {
 		private String adresse;
 		
 		
+		private int code_tva;
 		
+		@OneToMany(cascade=CascadeType.MERGE)
+		private List<Produit> listeProduits;
 		
 		public Personne() {
 			super();
@@ -88,6 +93,32 @@ public class Personne implements Serializable {
 			this.adresse = adresse;
 		}
 		
+		
+		
+		public int getCode_tva() {
+			return code_tva;
+		}
+
+
+
+		public void setCode_tva(int code_tva) {
+			this.code_tva = code_tva;
+		}
+
+
+
+		public List<Produit> getListeProduits() {
+			return listeProduits;
+		}
+
+
+
+		public void setListeProduits(List<Produit> listeProduits) {
+			this.listeProduits = listeProduits;
+		}
+
+
+
 		public String inscrir()
 		{
 			Personne p=new Personne();
@@ -130,6 +161,7 @@ public class Personne implements Serializable {
 					{
 						System.out.println("Personne trouvée");
 						trouve=true;
+						Personne.idSession=per.getIdPersonne();
 					}
 					else
 					{
@@ -149,6 +181,12 @@ public class Personne implements Serializable {
 				
 			
 			
+		}
+		
+		public void ajouterProduitAVendeur(Produit produit)
+		{
+			PersonneDaoImpl vdi=new PersonneDaoImpl();
+			vdi.ajouterProduitAVendeur(Personne.idSession, produit);
 		}
 
 	}

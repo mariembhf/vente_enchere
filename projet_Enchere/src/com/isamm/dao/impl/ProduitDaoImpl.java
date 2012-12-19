@@ -65,5 +65,40 @@ public class ProduitDaoImpl {
 			return ProduitDao.listProduits();
 			
 		}
+		
+		public final List<Produit> listProduitEncher() {
+			
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			System.out.println("entity manager créé");
+			
+			
+			return ProduitDao.listProduitsEncher();
+			
+		}
+		
+		public final List<Produit> listProduitNonEncher(int idPersonne) {
+			
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			System.out.println("entity manager créé");
+			
+			
+			return ProduitDao.listProduitsNonEncher(idPersonne);
+			
+		}
+		
+		public List<Produit> trouverProduit(String libelle)
+		{
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			
+			return ProduitDao.trouverProduit(libelle);
+			
+			
+		}
 
 }

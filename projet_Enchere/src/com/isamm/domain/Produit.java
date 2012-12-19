@@ -1,12 +1,19 @@
 package com.isamm.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
 import org.springframework.beans.factory.annotation.Required;
+
+import com.isamm.dao.impl.AtEnchereDaoImpl;
+import com.isamm.dao.impl.ProduitDaoImpl;
+import com.isamm.dao.impl.VenteEnchereDaoImpl;
 
 /**
  * Entity implementation class for Entity: Produit
@@ -29,7 +36,10 @@ public class Produit implements Serializable {
 	private String libelle;
 	private String description;
 	private int quantite_stock;
+	private String etat;
 	
+
+	private boolean editable;
 	
 
 	public Produit() {
@@ -84,13 +94,102 @@ public class Produit implements Serializable {
 		this.quantite_stock = quantite_stock;
 	}
 	
+	
 
-	public void encherir()
+	public String getEtat() {
+		return etat;
+	}
+
+
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+
+	
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
+
+
+	public void encherir(String libProd,int prixPropose)
 	{
+		System.out.println(" dans méthode encherir");
+		System.out.println(" le libelle du produit est "+libProd);
+		System.out.println(" le prix proposé est "+prixPropose);
 		
-			System.out.println(" dans méthode encherir");
+		//recuperation de l'id du produit a encherir
+		ProduitDaoImpl pdi=new ProduitDaoImpl();
+		Iterator it= pdi.trouverProduit(libProd).iterator();
+		Produit p = (Produit) it.next();
+		int idProd =p.getIdProduit();
+		
+		//chercher le venteencher correspondante
+		VenteEnchereDaoImpl vdi = new VenteEnchereDaoImpl();
+		Iterator it1=vdi.trouverVE(idProd).iterator();
+		VenteEnchere ve=(VenteEnchere) it1.next();
+		int idVE = ve.getIdVente_Enchere();
+		
+		//enregistrer la demande dans l'atenchere
+		AtEnchere ate= new AtEnchere();
+		ate.setIdProduit(idProd);
+		ate.setIdVente_Enchere(idVE);
+		ate.setDate(new Date());
+		ate.setPrix_propose(prixPropose);
+		
+		AtEnchereDaoImpl adi = new AtEnchereDaoImpl();
+		adi.insererAt_Enchere(ate);
+			
 		
 		
 	}
    
+	public void detailProd(Produit prod)
+	{
+		System.out.println("en cours du changement du libelle");
+		System.out.println(prod.getLibelle());
+		this.libelle = prod.getLibelle();
+		System.out.println(this.getLibelle());
+		
+	}
+	
+	/*public void ajouterProduit(Produit p)
+	{
+		ProduitDaoImpl pdi = new ProduitDaoImpl();
+		p.setEtat("nonencher");
+		pdi.insererProduit(p);
+		
+		//récupération de l'id du produit déjà ajouté
+		List <Produit> list=pdi.trouverProduit(p.getLibelle());
+		Iterator it= pdi.trouverProduit(p.getLibelle()).iterator();
+		Produit p2 = (Produit) it.next();
+		int idProd =p2.getIdProduit();
+		 System.out.println("l'id du produit est "+idProd);
+		 System.out.println("l'id de l'utilisateur est "+Personne.idSession);
+		
+		//insertion de l'id du produit et l'id du vendeur dans la table personne_produit
+		Vendeur v =new Vendeur();
+		v.ajouterProduit(Personne.idSession, idProd);
+		
+	}*/
+	
+	
+	public void supprimerProduit(Produit p)
+	{
+		ProduitDaoImpl pdi = new ProduitDaoImpl();
+		pdi.supprimerProduit(p);
+	}
+		
+		
+	
+	
 }

@@ -95,7 +95,7 @@ public class AtEnchere implements Serializable {
 		return idEnchereur;
 	}
 
-	@Required
+	
 	public void setIdEnchereur(int idEnchereur) {
 		this.idEnchereur = idEnchereur;
 	}

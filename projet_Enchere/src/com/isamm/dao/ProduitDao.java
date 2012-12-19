@@ -42,7 +42,8 @@ public class ProduitDao {
 		
 		try{
 		    em.getTransaction().begin();
-		    em.remove(p);
+		    Produit test = em.merge(p);
+		    em.remove(test);
 		    em.getTransaction().commit();
 		  } finally {
 		    em.close();
@@ -62,5 +63,39 @@ public class ProduitDao {
 		return produit;
 	}
 	
+	public static List<Produit> listProduitsEncher()
+	{
+		Query query = em.createNativeQuery("select * from Produit p where p.etat='encher' ",Produit.class);
+		System.out.println(query.toString());
+		List <Produit> produit =  query.getResultList();
+		
+		
+		return produit;
+	}
+	
+	public static List<Produit> listProduitsNonEncher(int idPersonne)
+	{
+		
+		//autrement
+		Personne p=em.find(Personne.class, idPersonne);
+		List <Produit> produit= p.getListeProduits();
+		
+		
+		/*
+		Query query = em.createNativeQuery("select * from Produit p where p.etat='nonencher' ",Produit.class);
+		System.out.println(query.toString());
+		List <Produit> produit =  query.getResultList();
+		*/
+		
+		
+		return produit;
+	}
+	
+	public static List<Produit> trouverProduit(String libelle)
+	{
+		Query query = em.createNativeQuery("select * from Produit p where p.libelle='"+libelle+"' ",Produit.class);
+		List <Produit> p = query.getResultList();
+		return p;
+	}
 
 }

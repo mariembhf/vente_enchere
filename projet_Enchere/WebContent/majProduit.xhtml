@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+	<link href="table-style.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<center><br></br>
+		<br></br>
+		<h:outputText styleClass="title_style"
+			value="Mise à jour d'un produit" /> <br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+
+		<h:commandButton value="Afficher produits" action="#{produit.listProduitNonEncher}" update=":table"></h:commandButton> <br></br>
+		<br></br>
+		<p:panel>
+		<h:panelGrid id="addSRCPanel" columns="5" bgcolor="White" styleClass="style_panel">
+			<p:dataTable id="table" value="#{produit.listProduits}" var="r"
+				styleClass="order-table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="2,5,10" selection="#{produit.selectedProduit}"
+				selectionMode="single">
+				
+				<p:column headerText="Code Produit" sortBy="#{r.idProduit}"
+					filterBy="#{r.idProduit}" id="idProduit">    #{r.idProduit}
+                </p:column>
+                
+                 <p:column sortBy="#{r.libelle}" id="libProduit">
+				    <f:facet name="header">Libelle produit</f:facet>
+				    <h:inputText value="#{r.libelle}" size="20" rendered="#{r.editable}" />
+					<h:outputText value="#{r.libelle}"  rendered="#{not r.editable}"/>
+				</p:column>
+				
+                <p:column sortBy="#{r.description}">
+				    <f:facet name="header">Description produit</f:facet>
+				    <h:inputText value="#{r.description}" size="20" rendered="#{r.editable}" />
+					<h:outputText value="#{r.description}" rendered="#{not r.editable}" />
+				</p:column>
+
+				<p:column sortBy="#{r.quantite_stock}">
+				    <f:facet name="header">Quantite en stock</f:facet>
+				    <h:inputText value="#{r.quantite_stock}" size="20" rendered="#{r.editable}" />
+					<h:outputText value="#{r.quantite_stock}" rendered="#{not r.editable}" />
+				</p:column>
+                
+
+
+				<p:column>
+				    <f:facet name="header">Modification</f:facet>
+					<h:commandLink value="Modifier" action="#{produit.editAction(r)}" rendered="#{not r.editable}" />
+				</p:column>
+				
+				<p:column>
+				    <f:facet name="header">Suppression</f:facet>
+					<h:commandLink value="Supprimer" action="#{prod.supprimerProduit(r)}" autoupdate=":table"  />
+				</p:column>
+
+
+			</p:dataTable>
+			</h:panelGrid> <br></br>
+		</p:panel>
+		<br></br>
+
+
+		<h:commandButton value="Enregistrer" action="#{produit.modifierProd}" />
+		</center>
+	</h:form>
+</h:body>
+</html>

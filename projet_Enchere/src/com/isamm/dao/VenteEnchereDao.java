@@ -1,6 +1,9 @@
 package com.isamm.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.isamm.domain.*;
 
@@ -46,6 +49,14 @@ public class VenteEnchereDao {
 		    
 		  }
 		
+	}
+	
+	
+	public static List <VenteEnchere> trouverVE(int idProd)
+	{
+		Query query = em.createNativeQuery("select * from VenteEnchere v where v.idProduit='"+idProd+"' and v.etat='encour' ",VenteEnchere.class);
+		List <VenteEnchere> ve =  query.getResultList();
+		return ve;
 	}
 	
 }

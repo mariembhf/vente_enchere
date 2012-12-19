@@ -2,6 +2,8 @@ package com.isamm.dao.impl;
 
 
 
+import java.util.List;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -49,5 +51,15 @@ public class VenteEnchereDaoImpl {
 		
 		}
 
+	public final List <VenteEnchere> trouverVE(int idProd)
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		VenteEnchereDao.em  = emf.createEntityManager();
+		
+		
+	
+		
+		return VenteEnchereDao.trouverVE(idProd);
+	}
 
 }

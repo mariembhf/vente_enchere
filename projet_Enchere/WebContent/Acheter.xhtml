@@ -10,7 +10,7 @@
 
 <h:body>
 
-	<h:form>
+	<h:form id="achat">
 		
 		<center><br></br>
 		<br></br>
@@ -34,7 +34,7 @@
 					filterBy="#{r.idProduit}" id="idProduit">    #{r.idProduit}
                 </p:column>
 
-                <p:column sortBy="#{r.libelle}">
+                <p:column sortBy="#{r.libelle}" id="libProduit">
 				    <f:facet name="header">Libelle produit</f:facet>
 					<h:outputText value="#{r.libelle}" />
 				</p:column>
@@ -54,7 +54,8 @@
 				    <f:facet name="header">Action</f:facet>
 					
 					
-					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)"  onclick="dialog.show();" >
+					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)"  action="#{prod.detailProd(r)}"
+					 autoUpdate="encherDialog.libProd" onclick="dialog.show();" >
 						<h:outputText value="Encherir" />
 					</p:commandLink>
 					
@@ -79,10 +80,11 @@
         	<h:panelGrid id="encherPanel" columns="2" bgcolor="White">
 
 						<h:outputText  value="Libellé produit" />
-						<p:inputText id="libProd" value="#{produit.libelle}"></p:inputText>
+						<p:inputText id="libProd"  value="#{prod.libelle}"></p:inputText>
+						
 						
 						<h:outputText  value="Dernier prix" />
-						<p:inputText id="prix"  ></p:inputText>
+						<p:inputText id="prix" readonly="true" ></p:inputText>
 						
 
 						<h:outputText value="Prix proposé" />
@@ -90,7 +92,7 @@
 
 						
 						<p:spacer></p:spacer>
-						<h:commandButton value="valider" action="#{prod.encherir}" ></h:commandButton>
+						<h:commandButton value="valider" action="#{prod.encherir(prod.libelle,atenchere.prix_propose)}" ></h:commandButton>
 
 			</h:panelGrid>
            

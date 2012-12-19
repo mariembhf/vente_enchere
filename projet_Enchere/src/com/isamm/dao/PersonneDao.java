@@ -51,7 +51,7 @@ public class PersonneDao {
 	}
 	
 	
-	public static void supprimerPersonne(Personne p){
+		public static void supprimerPersonne(Personne p){
 		
 		try{
 		    em.getTransaction().begin();
@@ -61,9 +61,36 @@ public class PersonneDao {
 		    em.close();
 		    
 		  }
+		}
+		
+	
+		public static void ajouterProduitAPersonne(int idPersonne,Produit produit){
+			
+			Personne personne = em.find(Personne.class, idPersonne);
+			//Produit produit = em.find(Produit.class, idProduit);
+			
+			
+			
+			
+			System.out.println("dans vendeur dao : le vendeur a un id "+personne.getIdPersonne());
+			//System.out.println("dans vendeur dao : le produit a un id "+produit.getIdProduit());
+			
+			try{
+			    em.getTransaction().begin();
+			    em.persist(produit);
+			    Personne p = em.merge(personne);
+			    p.getListeProduits().add(produit);
+			    
+			    em.getTransaction().commit();
+			  } finally {
+			    em.close();
+			    
+			  }
+			
+			
+			
 		
 	}
-
 	
 	
 }

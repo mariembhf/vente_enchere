@@ -12,15 +12,14 @@ import com.isamm.domain.*;
 
 public class AtEnchereDaoImpl {
 
-public final void insererAt_Enchere() {
+public final void insererAt_Enchere(AtEnchere ae) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
 		AtEnchereDao.em  = emf.createEntityManager();
 		
 		System.out.println("entity manager créé");
 		
-		AtEnchere ae = new AtEnchere();
-		ae.setDate(new Date());
+		
 		AtEnchereDao.insererAt_Enchere(ae);
 		
 	}

@@ -23,7 +23,7 @@ public class EnchereurDao {
 	public static List <Enchereur> trouverEnchereur(Enchereur p){
 		
 		
-		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Vendeur.class);
+		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Enchereur.class);
 		System.out.println(query.toString());
 		//query.setParameter(1, "lePrenom2");
 		List <Enchereur> personne =  query.getResultList();

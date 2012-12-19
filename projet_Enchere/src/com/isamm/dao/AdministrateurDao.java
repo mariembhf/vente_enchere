@@ -22,7 +22,7 @@ public class AdministrateurDao {
 	public static List <Administrateur> trouverAdministrateur(Administrateur p){
 		
 		
-		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Vendeur.class);
+		Query query = em.createNativeQuery("select * from Personne p where login ='"+p.getLogin()+"' and pwd='"+p.getPwd()+"'",Administrateur.class);
 		System.out.println(query.toString());
 		//query.setParameter(1, "lePrenom2");
 		List <Administrateur> personne =  query.getResultList();
