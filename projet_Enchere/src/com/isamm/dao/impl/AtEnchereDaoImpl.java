@@ -3,6 +3,7 @@ package com.isamm.dao.impl;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -46,6 +47,18 @@ public final void insererAt_Enchere(AtEnchere ae) {
 	
 		
 		AtEnchereDao.supprimerAt_Enchere(ae);
+		
+		}
+	
+	public final List<AtEnchere> trouverAtEnchere(int idProduit,int idVenteEnchere) {
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		AtEnchereDao.em  = emf.createEntityManager();
+		
+		System.out.println("entity manager créé");
+	
+		
+		return AtEnchereDao.trouverAtEnchere(idProduit, idVenteEnchere);
 		
 		}
 

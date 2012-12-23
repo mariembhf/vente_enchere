@@ -12,8 +12,10 @@ import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Required;
 
 import com.isamm.dao.impl.AtEnchereDaoImpl;
+import com.isamm.dao.impl.PersonneDaoImpl;
 import com.isamm.dao.impl.ProduitDaoImpl;
 import com.isamm.dao.impl.VenteEnchereDaoImpl;
+import com.isamm.presentation.VenteEnchereBean;
 
 /**
  * Entity implementation class for Entity: Produit
@@ -121,7 +123,7 @@ public class Produit implements Serializable {
 
 
 
-	public void encherir(String libProd,int prixPropose)
+	public String encherir(String libProd,int prixPropose)
 	{
 		System.out.println(" dans méthode encherir");
 		System.out.println(" le libelle du produit est "+libProd);
@@ -139,17 +141,24 @@ public class Produit implements Serializable {
 		VenteEnchere ve=(VenteEnchere) it1.next();
 		int idVE = ve.getIdVente_Enchere();
 		
+		//trouver le nom de l'enchereur
+		PersonneDaoImpl personneDI=new PersonneDaoImpl();
+		
+		
 		//enregistrer la demande dans l'atenchere
 		AtEnchere ate= new AtEnchere();
 		ate.setIdProduit(idProd);
 		ate.setIdVente_Enchere(idVE);
-		ate.setDate(new Date());
+		ate.setIdEnchereur(Personne.idSession);
+		ate.setNomEnchereur(personneDI.trouverPersonneParId(Personne.idSession).getNom());
+		ate.setDate(new Date());//la date actuelle
 		ate.setPrix_propose(prixPropose);
+		ate.setEtat("encour");
 		
 		AtEnchereDaoImpl adi = new AtEnchereDaoImpl();
 		adi.insererAt_Enchere(ate);
 			
-		
+		return null;
 		
 	}
    
@@ -159,6 +168,21 @@ public class Produit implements Serializable {
 		System.out.println(prod.getLibelle());
 		this.libelle = prod.getLibelle();
 		System.out.println(this.getLibelle());
+		
+		//recupération de la quantité a vendre de ce produit dans l'encher
+		/*VenteEnchere ve= new VenteEnchere();
+		List <VenteEnchere> listeVE = ve.trouverVE(prod.getIdProduit());
+		Iterator it=listeVE.iterator();
+		while(it.hasNext())
+		{
+			VenteEnchere venteE=(VenteEnchere)it;
+			if(venteE.getEtat().equals("encour"))
+			{
+				VenteEnchereBean.quantiteAVendre=venteE.getQuantite();
+			}
+		}*/
+		
+		
 		
 	}
 	

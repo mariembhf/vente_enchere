@@ -1,6 +1,7 @@
 package com.isamm.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class ProduitBean implements Serializable {
 	private String libelle;
 	private String dernierPrix;
 	
+	private List<String> libelleProduits;
 
 	public List<Produit> getListProduits() {
 		return listProduits;
@@ -54,6 +56,15 @@ public class ProduitBean implements Serializable {
 	public void setDernierPrix(String dernierPrix) {
 		this.dernierPrix = dernierPrix;
 	}
+	
+	
+	public  List<String> getLibelleProduits() {
+		return libelleProduits;
+	}
+
+	public  void setLibelleProduits(List<String> libelleProduits) {
+		this.libelleProduits = libelleProduits;
+	}
 
 	public ProduitBean() {
 		
@@ -61,7 +72,7 @@ public class ProduitBean implements Serializable {
 	}
 	
 	
-	public void listProduitDispo()
+	public String listProduitEncher()
 	{
 		ProduitDaoImpl pdi=new ProduitDaoImpl();
 		
@@ -76,7 +87,7 @@ public class ProduitBean implements Serializable {
 			System.out.println(" description = "+p.getDescription());
 		}
 		
-		
+		return null;
 		
 	}
 	
@@ -107,13 +118,35 @@ public class ProduitBean implements Serializable {
 		this.listProduits=pdi.listProduitNonEncher(Personne.idSession);
 		
 		Iterator it=listProduits.iterator();
+		libelleProduits=new ArrayList<String>();
+		System.out.println("taille de la liste est "+libelleProduits.size());
 		
 		while(it.hasNext())
 		{
 			Produit p=(Produit)it.next();
 			System.out.println("id = "+p.getIdProduit());
 			System.out.println(" description = "+p.getDescription());
+			
+			//this.getLibelleProduits().add(p.getLibelle());
+			libelleProduits.add(p.getLibelle());
+			System.out.println("taille de la liste est "+libelleProduits.size());
+			
 		}
+		
+		//vider la liste des libelle des anciennes valeurs
+		/*if(libelleProduits.isEmpty()){
+			 libelleProduits.clear();
+			}*/
+		
+		 /*libelleProduits=new ArrayList<String>();
+		
+		//remplissage de la liste des libelles avec des nouvelles valeurs
+		 for(int i=0;i<this.listProduits.size();i++){
+			 this.getLibelleProduits().add(this.listProduits.get(i).getLibelle());
+			   
+	    	   //System.out.println(this.listProduits.get(i).toString());  
+	    	  
+	    	}*/
 		
 	}
 	

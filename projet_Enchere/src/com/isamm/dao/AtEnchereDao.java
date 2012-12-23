@@ -1,6 +1,9 @@
 package com.isamm.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.isamm.domain.*;
 
@@ -52,6 +55,15 @@ public class AtEnchereDao {
 		
 	}
 
-
+	public static List<AtEnchere> trouverAtEnchere(int idProduit,int idVenteEnchere)
+	{
+		System.out.println("l'id du produit est "+idProduit);
+		System.out.println("l'id de la vente enchere est "+idVenteEnchere);
+		
+		Query query = em.createNativeQuery("select * from AtEnchere ae where ae.idProduit="+idProduit+" and ae.idVenteEnchere="+idVenteEnchere+"",AtEnchere.class);
+		List <AtEnchere> p = query.getResultList();
+		return p;
+	}
+	
 
 }

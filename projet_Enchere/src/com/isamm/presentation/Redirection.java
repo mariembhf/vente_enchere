@@ -33,7 +33,7 @@ includedPage = "/Acheter.xhtml";
 }
 else if (selectedPageViewId.equalsIgnoreCase("Vendre"))
 {
-includedPage = "/Vendre.xhtml";
+includedPage = "/AjoutEnchere.xhtml";
 }
 else if (selectedPageViewId.equalsIgnoreCase("Compte"))
 {
@@ -47,6 +47,24 @@ else if (selectedPageViewId.equalsIgnoreCase("Rechercher"))
 {
 includedPage = "/Rechercher.xhtml";
 }
+else if (selectedPageViewId.equalsIgnoreCase("AjoutProd"))
+{
+includedPage = "/AjouterProduit.xhtml";
+}
+else if (selectedPageViewId.equalsIgnoreCase("MAJProd"))
+{
+includedPage = "/majProduit.xhtml";
+}
+else if (selectedPageViewId.equalsIgnoreCase("Historique"))
+{
+includedPage = "/Historique.xhtml";
+}
+else if (selectedPageViewId.equalsIgnoreCase("validation"))
+{
+includedPage = "/ValiderAchat.xhtml";
+}
+
+
 System.out.println("Page Id is: " + selectedPageViewId);
 return "includedPage";
 }

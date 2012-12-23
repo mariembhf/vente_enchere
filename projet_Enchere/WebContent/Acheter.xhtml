@@ -20,8 +20,9 @@
 		
 		<p:panel>
 		
-		<h:commandButton value="Afficher produits" action="#{produit.listProduitDispo}" update=":tableProduit"/>
+		<h:commandButton value="Afficher produits" action="#{produit.listProduitEncher}" update=":tableProduit"/>
 		
+		<h:panelGrid id="addSRCPanel" columns="5" bgcolor="White" styleClass="style_panel">
 			<p:dataTable id="tableProduit" value="#{produit.listProduits}" var="r"
 				styleClass="order-table" headerClass="order-table-header"
 				rowClasses="order-table-odd-row,order-table-even-row"
@@ -51,8 +52,16 @@
 
 
 				<p:column>
-				    <f:facet name="header">Action</f:facet>
+				    <f:facet name="header">Détail</f:facet>
 					
+					<p:commandLink id="detail" style="margin-right:20px ;color: RGB(72,120,184)" onclick="dialogDetail.show();" action="#{atenchere.detailAtEnchere(r)}" >
+						<h:outputText value="Voir détail" />
+					</p:commandLink>
+					
+				</p:column>
+
+				<p:column>
+				    <f:facet name="header">Participer</f:facet>
 					
 					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)"  action="#{prod.detailProd(r)}"
 					 autoUpdate="encherDialog.libProd" onclick="dialog.show();" >
@@ -66,7 +75,7 @@
 			</p:dataTable>
 		
 		
-		
+			</h:panelGrid>
 		</p:panel>
 		</center>
 	</h:form>
@@ -74,17 +83,13 @@
 	
 	<h:form>
 	<center>	 
-	<p:dialog id="encherDialog"  draggable="false" resizable="true" header="Enchérir" widgetVar="dialog" height="220" width="500">
+	<p:dialog id="encherDialog"  draggable="false" resizable="true" header="Enchérir" widgetVar="dialog" height="320" width="500">
 	
         
         	<h:panelGrid id="encherPanel" columns="2" bgcolor="White">
 
 						<h:outputText  value="Libellé produit" />
-						<p:inputText id="libProd"  value="#{prod.libelle}"></p:inputText>
-						
-						
-						<h:outputText  value="Dernier prix" />
-						<p:inputText id="prix" readonly="true" ></p:inputText>
+						<p:inputText id="libProd" readonly="true" value="#{prod.libelle}"></p:inputText>
 						
 
 						<h:outputText value="Prix proposé" />
@@ -103,6 +108,37 @@
 		</center>
 
 </h:form>
+	
+	
+	<h:form>
+	<center>	 
+	<p:dialog id="detailDialog"  draggable="false" resizable="true" header="Détails" widgetVar="dialogDetail" height="320" width="500">
+	
+        
+        	<h:panelGrid id="detailPanel" columns="2" bgcolor="White">
+
+						
+						
+						<h:outputText  value="Quantité a vendre " />
+						<p:inputText id="quantiteProd" readonly="true" value="#{atenchere.quantite}"></p:inputText>
+						
+						
+						<h:outputText  value="Dernier prix" />
+						<p:inputText id="prix" readonly="true" value="#{atenchere.prix_propose}" ></p:inputText>
+						
+
+						<p:spacer></p:spacer>
+						<h:commandButton value="Fermer" onclick="dialogDetail.close();" ></h:commandButton>
+
+			</h:panelGrid>
+           
+      
+		</p:dialog>
+		
+		
+		</center>
+
+	</h:form>
 	
 	
 </h:body>

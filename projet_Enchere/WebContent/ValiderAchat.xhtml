@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	
+	
+<h:head>
+	
+</h:head>
+
+<h:body>
+
+	<h:form id="achat">
+		
+		<center><br></br>
+		<br></br>
+		
+		
+		<h:outputText styleClass="title_style" value="Achat de produits" /> <br></br>
+		
+		<p:panel>
+		
+		<h:commandButton value="Afficher les enchere " action="#{venteBean.validerLesEncher}" update=":tableEnchere"/>
+		
+		<h:panelGrid id="addSRCPanel" columns="5" bgcolor="White" styleClass="style_panel">
+			<p:dataTable id="tableEnchere" value="#{venteBean.listeVenteEnchere}" var="r"
+				styleClass="order-table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row"
+				paginator="true" rows="2"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="2,5,10" 
+				selectionMode="single">
+				
+				<p:column headerText="Code Vente " sortBy="#{r.idVente_Enchere}"
+					filterBy="#{r.idVente_Enchere}" id="idVente_Enchere">    #{r.idVente_Enchere}
+                </p:column>
+
+               <p:column headerText="Code Vente " sortBy="#{r.idProduit}"
+					filterBy="#{r.idProduit}" id="idProduit">    #{r.idProduit}
+                </p:column>
+				
+                <p:column>
+				    <f:facet name="header">Date début</f:facet>
+					<p:calendar value="#{r.date_deb}" readonly="true" ></p:calendar>
+				</p:column>
+
+				<p:column>
+				    <f:facet name="header">Date fin</f:facet>
+					<p:calendar value="#{r.date_fin}" readonly="true"></p:calendar>
+				</p:column>
+
+
+				<p:column>
+				    <f:facet name="header">Détail</f:facet>
+					
+					<p:commandLink id="detail" style="margin-right:20px ;color: RGB(72,120,184)" onclick="dialogDetail.show();"
+					action="#{atenchere.detailVenteEnchere(r)}" >
+						<h:outputText value="Voir détail" />
+					</p:commandLink>
+					
+				</p:column>
+
+				<p:column>
+				    <f:facet name="header">Valider</f:facet>
+					
+					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)"  >
+						<h:outputText value="Valider" />
+					</p:commandLink>
+					
+				</p:column>
+
+				
+
+			</p:dataTable>
+		
+		
+			</h:panelGrid>
+		</p:panel>
+		</center>
+	</h:form>
+	
+
+	
+	<h:form>
+	<center>	 
+	<p:dialog id="detailDialog"  draggable="false" resizable="true" header="Détails" widgetVar="dialogDetail" height="320" width="500">
+	
+        
+        	<h:panelGrid id="detailPanel" columns="2" bgcolor="White">
+
+						
+						
+						<h:outputText  value="Nom du client " />
+						<p:inputText id="nomClient" readonly="true" value="#{atenchere.nomEnchereur}"></p:inputText>
+						
+						<h:outputText  value="Quantité " />
+						<p:inputText id="nomClient" readonly="true" value="#{atenchere.quantite}"></p:inputText>
+						
+						
+						<h:outputText  value="Prix de vente " />
+						<p:inputText id="prix" readonly="true" value="#{atenchere.prix_propose}" ></p:inputText>
+						
+
+						<p:spacer></p:spacer>
+						<h:commandButton value="Fermer" onclick="dialogDetail.close();" ></h:commandButton>
+
+			</h:panelGrid>
+           
+      
+		</p:dialog>
+		
+		
+		</center>
+
+	</h:form>
+	
+	
+</h:body>
+</html>

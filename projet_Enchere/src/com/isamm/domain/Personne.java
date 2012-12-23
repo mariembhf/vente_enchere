@@ -186,6 +186,7 @@ public class Personne implements Serializable {
 		public void ajouterProduitAVendeur(Produit produit)
 		{
 			PersonneDaoImpl vdi=new PersonneDaoImpl();
+			produit.setEtat("nonencher");
 			vdi.ajouterProduitAVendeur(Personne.idSession, produit);
 		}
 

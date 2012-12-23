@@ -37,6 +37,13 @@ public class PersonneDaoImpl {
 		
 		return PersonneDao.trouverPersonne(p);
 	}
+	
+	public final Personne trouverPersonneParId(int idPersonne)
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		PersonneDao.em  = emf.createEntityManager();
+		return PersonneDao.trouverPersonneParId(idPersonne);
+	}
 
 
 	public final void modifierPersonne(Personne p) {

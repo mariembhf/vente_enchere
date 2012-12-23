@@ -59,4 +59,18 @@ public class VenteEnchereDao {
 		return ve;
 	}
 	
+	public static List <VenteEnchere> trouverVENonValide()
+	{
+		Query query = em.createNativeQuery("select * from VenteEnchere v where v.etat='fini' and v.etatVente='nonvalide' ",VenteEnchere.class);
+		List <VenteEnchere> ve =  query.getResultList();
+		return ve;
+	}
+	
+	public static List <VenteEnchere> trouverVENonFini()
+	{
+		Query query = em.createNativeQuery("select * from VenteEnchere v where v.etat='encour' ",VenteEnchere.class);
+		List <VenteEnchere> ve =  query.getResultList();
+		return ve;
+	}
+	
 }

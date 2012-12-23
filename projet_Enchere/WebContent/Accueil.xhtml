@@ -47,19 +47,27 @@
 			collapsible="true">
 			<h:form>
 			<p:menu style="width: 98%">
-				<p:submenu label="Arts et Antiquités">
-					<p:menuitem value="Arts"  />
-					<p:menuitem value="Antiquités" />
+				<p:submenu label="Espace vendeur">
+					<p:menuitem value="Ajout produit" id="AjoutProd" action="#{redirection.sideBarAction}"  update=":cent" >
+						 <f:param id="page6ParamId" name="pageViewId" value="AjoutProd"/>
+					</p:menuitem>
+					<p:menuitem value="Mise à jour de produit" id="MAJProd" action="#{redirection.sideBarAction}"  update=":cent" >
+						 <f:param id="page7ParamId" name="pageViewId" value="MAJProd"/>
+					</p:menuitem>
+					
+					<p:menuitem value="Historiques" id="historique" action="#{redirection.sideBarAction}"  update=":cent" >
+						 <f:param id="page8ParamId" name="pageViewId" value="historique"/>
+					</p:menuitem>
 				</p:submenu>
-				<p:submenu label="Automobiles, véhicules">
-					<p:menuitem value="Automobiles" />
-					<p:menuitem value="Véhicules"  />
-					</p:submenu>
-				<p:submenu label="Beauté, bien-être">
 				
-					<p:menuitem value="Produits Beauté " />
-				</p:submenu>
 			</p:menu>
+			
+			<p:menu style="width: 98%">
+				<p:menuitem value="valider Achat" id="validation" action="#{redirection.sideBarAction}"  update=":cent" >
+					<f:param id="page10ParamId" name="pageViewId" value="validation"></f:param>
+				</p:menuitem>
+			</p:menu>
+			
 			</h:form>
 		</p:layoutUnit>
 		

@@ -2,10 +2,17 @@ package com.isamm.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
 import org.springframework.beans.factory.annotation.Required;
+
+import com.isamm.dao.impl.ProduitDaoImpl;
+import com.isamm.dao.impl.VenteEnchereDaoImpl;
 
 /**
  * Entity implementation class for Entity: Vente_Enchere
@@ -13,6 +20,8 @@ import org.springframework.beans.factory.annotation.Required;
  */
 @Entity
 
+@ManagedBean(name="venteenchere")
+@SessionScoped
 public class VenteEnchere implements Serializable {
 
 	
@@ -27,6 +36,8 @@ public class VenteEnchere implements Serializable {
 	@Temporal(TemporalType.DATE) private Date date_fin;
 	private int prix_initial;
 	private String etat;
+	private String etatVente;
+	private int quantite;
 
 	public VenteEnchere() {
 		// TODO Auto-generated constructor stub
@@ -87,5 +98,63 @@ public class VenteEnchere implements Serializable {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+	
+	
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	
+	public String getEtatVente() {
+		return etatVente;
+	}
+
+	public void setEtatVente(String etatVente) {
+		this.etatVente = etatVente;
+	}
+
+	public void ajouterVenteEnchere(String libelleProduit)
+	{
+		//recuperation de l'id du produit a encherir
+		ProduitDaoImpl pdi=new ProduitDaoImpl();
+		Iterator it= pdi.trouverProduit(libelleProduit).iterator();
+		Produit p = (Produit) it.next();
+		int idProd =p.getIdProduit();
+		
+		
+		//remplissage de la vente enchere
+		VenteEnchere ve= new VenteEnchere();
+		ve.setIdPersonne(Personne.idSession);
+		ve.setIdProduit(idProd);
+		ve.setDate_deb(this.getDate_deb());
+		ve.setDate_fin(this.getDate_fin());
+		ve.setPrix_initial(this.getPrix_initial());
+		ve.setEtat("encour");
+		ve.setQuantite(this.getQuantite());
+		ve.setEtatVente("nonvalide");
+		
+		//ajout dans la base
+		VenteEnchereDaoImpl vdi=new VenteEnchereDaoImpl();
+		vdi.insererVente_Enchere(ve);
+		
+		//modifier l'etat du produit
+		p.setEtat("encher");
+		pdi.modifierProduit(p);
+	}
+	
+	public List <VenteEnchere> trouverVE( int idProduit)
+	{
+		VenteEnchereDaoImpl vdi=new VenteEnchereDaoImpl();
+		List <VenteEnchere> p=vdi.trouverVE(idProduit);
+		
+		return p;
+		
+	}
+	
+	
    
 }

@@ -57,9 +57,23 @@ public class VenteEnchereDaoImpl {
 		VenteEnchereDao.em  = emf.createEntityManager();
 		
 		
-	
-		
 		return VenteEnchereDao.trouverVE(idProd);
+	}
+	
+	public final List <VenteEnchere> trouverVENonValide()
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		VenteEnchereDao.em  = emf.createEntityManager();
+		
+		return VenteEnchereDao.trouverVENonValide();
+	}
+	
+	public final List <VenteEnchere> trouverVENonFini()
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		VenteEnchereDao.em  = emf.createEntityManager();
+		
+		return VenteEnchereDao.trouverVENonFini();
 	}
 
 }

@@ -18,39 +18,53 @@
 		<link href="mystyle.css" rel="stylesheet" type="text/css" />
 		<br></br>
 		<center>
-		<h:outputText value="Prise en charge d'un nouveau produit" styleClass="title_style"></h:outputText></center>
+		<h:outputText value="Vente de produit" styleClass="title_style"></h:outputText></center>
 		<br></br>
 		<br></br>
 		
 		<p:panel>
+		
+		
 
-			<h:panelGrid styleClass="style_panel" style=" width:500px" bgcolor="White" columns="2">
+			<h:panelGrid styleClass="style_panel" style=" width:500px" bgcolor="White" columns="3">
+			
+				<p:spacer></p:spacer>
+				<h:commandButton value="Afficher produits" action="#{produit.listProduitNonEncher}" update="lib" />
+				<p:spacer></p:spacer>
+				
+				
 
-
-				<h:outputLabel styleClass="desc" value="Libellé " style="width:200px" />
-				<h:inputText id="lib" style="width:220px" value="#{prod.libelle}" required="true"
-					requiredMessage="Champs Libellé obligatoire" />
+				<h:outputLabel styleClass="desc" value="Libellé du produit " style="width:200px" />
+				<h:selectOneMenu id="lib" value="#{prod.libelle}"  effect="fade">
+					<f:selectItem itemLabel="Select One" itemValue="" itemDisabled="true" />
+					<f:selectItems value="#{produit.libelleProduits}"  />
+				</h:selectOneMenu>
 				<p:spacer></p:spacer>
-				<p:message for="lib"></p:message>
+				
+				
+				<h:outputLabel styleClass="desc" value="Quantité" style="width:200px" />
+				<h:inputText id="quantite" style="width:220px" value="#{venteenchere.quantite}" required="false"
+					requiredMessage="Champs quantité initial obligatoire" />
+				<p:message for="quantite"></p:message>
+				
+				<h:outputLabel styleClass="desc" value="Prix initial" style="width:200px" />
+				<h:inputText id="prix" style="width:220px" value="#{venteenchere.prix_initial}" required="false"
+					requiredMessage="Champs prix initial obligatoire" />
+				<p:message for="prix"></p:message>
 				
 				
 				
-				<h:outputLabel styleClass="desc" value="Description" style="width:200px" />
-				<p:inputTextarea id="desc" value="#{prod.description}" rows="2" cols="30" autoResize="true" />
-				<p:spacer></p:spacer>
-				<p:message for="desc"></p:message>
+				<h:outputLabel styleClass="desc" value="Date debut" style="width:200px" />
+				<p:calendar id="dateDeb" showOn="button" value="#{venteenchere.date_deb}" required="false" requiredMessage="Champs date debut obligatoire" ></p:calendar>
+				<p:message for="dateDeb"></p:message>
 				
-				
-				
-				<h:outputLabel styleClass="desc" value="Quantité en stock " style="width:200px" />
-				<h:inputText id="stock" style="width:220px" value="#{prod.quantite_stock}" required="true"
-					requiredMessage="Champs quantité en stock obligatoire" />
-				<p:spacer></p:spacer>
-				<p:message for="stock"></p:message>
+				<h:outputLabel styleClass="desc" value="Date fin" style="width:200px" />
+				<p:calendar id="dateFin" showOn="button" value="#{venteenchere.date_fin}" required="false" requiredMessage="Champs date fin obligatoire" ></p:calendar>
+				<p:message for="dateFin"></p:message>
 
 
 				<center>
-					<p:commandButton style=" width:150px" value="Sauvegarder" type="Submit" action="#{personne.ajouterProduitAVendeur(prod)}" />
+					<p:commandButton style=" width:150px" value="Sauvegarder" type="Submit" action="#{venteenchere.ajouterVenteEnchere(prod.libelle)}" />
 				</center>
 
 			</h:panelGrid>

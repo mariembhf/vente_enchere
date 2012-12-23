@@ -25,10 +25,7 @@ public class ProduitDao {
 		
 		try{
 		    em.getTransaction().begin();
-		    Produit produit = em.find(Produit.class, p.getIdProduit());
-		    produit.setDescription(p.getDescription()); 
-		    produit.setLibelle(p.getLibelle());
-		    produit.setQuantite_stock(p.getQuantite_stock());
+		    em.merge(p);
 		    em.getTransaction().commit();
 		  } finally {
 		    em.close();

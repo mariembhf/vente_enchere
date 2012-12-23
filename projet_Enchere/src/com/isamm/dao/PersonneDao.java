@@ -32,6 +32,14 @@ public class PersonneDao {
 		
 	}
 	
+	public static Personne trouverPersonneParId(int idPersonne){
+		
+		Personne p=em.find(Personne.class, idPersonne);
+		
+		return p;
+		
+	}
+	
 	public static void modifierPersonne(Personne p){
 		
 		try{
