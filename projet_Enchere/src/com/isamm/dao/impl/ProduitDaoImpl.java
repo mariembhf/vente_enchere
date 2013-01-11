@@ -100,5 +100,16 @@ public class ProduitDaoImpl {
 			
 			
 		}
+		
+		public Produit getProduit(int idProd)
+		{
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+			ProduitDao.em  = emf.createEntityManager();
+			
+			
+			return ProduitDao.getProduit(idProd);
+			
+			
+		}
 
 }

@@ -1,5 +1,6 @@
 package com.isamm.presentation;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -13,8 +14,9 @@ import com.isamm.domain.*;
 @ManagedBean(name="venteBean")
 public class VenteEnchereBean {
 	
-	private List <VenteEnchere> listeVenteEnchere;
+	private List <VenteEnchere> listeVenteEnchere=new ArrayList<>();
 	public static int quantiteAVendre=0;
+	private VenteEnchere selectedVenteEnchere;
 
 	public List<VenteEnchere> getListeVenteEnchere() {
 		return listeVenteEnchere;
@@ -33,6 +35,15 @@ public class VenteEnchereBean {
 	}
 	
 	
+	
+	public VenteEnchere getSelectedVenteEnchere() {
+		return selectedVenteEnchere;
+	}
+
+	public void setSelectedVenteEnchere(VenteEnchere selectedVenteEnchere) {
+		this.selectedVenteEnchere = selectedVenteEnchere;
+	}
+
 	public void listEnchereNonValide()
 	{
 		VenteEnchereDaoImpl vdi = new VenteEnchereDaoImpl();
@@ -57,6 +68,28 @@ public class VenteEnchereBean {
 		
 		//appel de la methode pour charger les listes des encheres non valide
 		listEnchereNonValide();
+		return null;
+	}
+	
+	
+	
+	public String validerEnchere()
+	{
+		listEnchereNonValide();
+		System.out.println("taille de la liste "+this.listeVenteEnchere.size());
+		for (VenteEnchere ve : this.listeVenteEnchere){
+			
+			System.out.println("Dans la méthode de validation");
+			
+			ve.setEtatVente("valide");
+			
+			VenteEnchereDaoImpl vdi = new VenteEnchereDaoImpl();
+			vdi.modifierVente_Enchere(ve);
+		
+		
+		}
+		
+		
 		return null;
 	}
 	

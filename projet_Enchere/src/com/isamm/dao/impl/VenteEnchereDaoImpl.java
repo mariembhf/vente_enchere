@@ -68,6 +68,14 @@ public class VenteEnchereDaoImpl {
 		return VenteEnchereDao.trouverVENonValide();
 	}
 	
+	public final List <VenteEnchere> trouverVEValide()
+	{
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");
+		VenteEnchereDao.em  = emf.createEntityManager();
+		
+		return VenteEnchereDao.trouverVEValide();
+	}
+	
 	public final List <VenteEnchere> trouverVENonFini()
 	{
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetEnchere");

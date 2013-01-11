@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13537916359580" configfile="/projet_Enchere/WebContent/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="122" y="178" id="pf13537917367981" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" outlinks="pf13537917367982 pf13537917367993" inlinks="pf13537917367993" path="Inscription.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="Authentification.xhtml" x="338" y="178" id="pf13537917367994" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf13537917367982" path="Authentification.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Authentification.xhtml" x="338" y="178" id="pf13537917367994" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13537917367982" path="Authentification.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" id="pf13563487617480" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf13563487617481 pf13563487617482" inlinks="pf13563487617481" path="Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Accueil.xhtml" id="pf13563487617483" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13563487617482" path="Accueil.xhtml"/>
   <links id="pf13537917367982" target="pf13537917367994" source="pf13537917367981" outcome="success"/>
   <links id="pf13537917367993" target="pf13537917367981" source="pf13537917367981" outcome="failure">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
+  <links id="pf13563487617481" target="pf13563487617480" source="pf13563487617480" outcome="failure"/>
+  <links id="pf13563487617482" target="pf13563487617483" source="pf13563487617480" outcome="success"/>
 </pageflow:Pageflow>

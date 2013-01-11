@@ -38,6 +38,9 @@ public class VenteEnchere implements Serializable {
 	private String etat;
 	private String etatVente;
 	private int quantite;
+	
+	
+	private boolean editable;
 
 	public VenteEnchere() {
 		// TODO Auto-generated constructor stub
@@ -116,6 +119,16 @@ public class VenteEnchere implements Serializable {
 	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
+	
+	
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
 
 	public void ajouterVenteEnchere(String libelleProduit)
 	{
@@ -155,6 +168,15 @@ public class VenteEnchere implements Serializable {
 		
 	}
 	
+	public String ValiderEnchere(VenteEnchere ve)
+	{
+		ve.setEtatVente("valide");
+		
+		VenteEnchereDaoImpl vdi = new VenteEnchereDaoImpl();
+		vdi.modifierVente_Enchere(ve);
+		
+		return null;
+	}
 	
    
 }

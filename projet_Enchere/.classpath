@@ -35,5 +35,7 @@
 	<classpathentry kind="src" path="/JpaExample1"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/mariem/Desktop/troisième_annéee_ingénieura/J2EE/libs/prime-ui-0.4-bundle.zip"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/mariem/Desktop/troisième_annéee_ingénieura/J2EE/libs/cupertino-1.0.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mariem/git/EGit Hub Tutorial/projet_Enchere/WebContent/WEB-INF/lib/primefaces-3.4.2-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/mariem/git/EGit Hub Tutorial/projet_Enchere/WebContent/WEB-INF/lib/primefaces-3.5-20121218.110722-1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

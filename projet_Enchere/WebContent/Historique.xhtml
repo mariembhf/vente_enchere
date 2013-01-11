@@ -1,15 +1,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.prime.com.tr/ui">
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.prime.com.tr/ui">
     <h:head>
         <title>Enchères</title>
         
     </h:head>
     <h:body>
-    <h:form>
-        <p:layout fullPage="true">
-        VENTE
-         </p:layout>
+   
+
+	 <h:form>
+      
+      		<link href="mystyle.css" rel="stylesheet" type="text/css" />
+			<center>
+			<p:panel>
+			
+				
+				
+				<h:commandLink value="Historique des ventes" action="#{historique.historiqueVente}" update=":table"></h:commandLink>
+				<br/>
+				<br/>
+				<br/>
+				
+				<h:panelGrid columns="5" bgcolor="White" styleClass="style_panel">
+				<p:dataTable id="table" value="#{historique.listHistorique}" var="r"
+				styleClass="order-table" headerClass="order-table-header"
+				rowClasses="order-table-odd-row,order-table-even-row"
+				paginator="true" rows="10"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="2,5,10" 
+				selectionMode="single">
+				
+				
+                
+                 <p:column sortBy="#{r.nomProd}" id="nomProduit">
+				    <f:facet name="header">Libelle produit</f:facet>
+					<h:outputText value="#{r.nomProd}" />
+				</p:column>
+				
+                <p:column sortBy="#{r.descProd}">
+				    <f:facet name="header">Description produit</f:facet>
+					<h:outputText value="#{r.descProd}"  />
+				</p:column>
+				
+				 <p:column sortBy="#{r.date}">
+				    <f:facet name="header">Date vente/achat</f:facet>
+					<p:calendar value="#{r.date}" disabled="true"></p:calendar>
+				</p:column>
+				
+
+				
+
+			</p:dataTable>
+			</h:panelGrid> <br></br>
+						
+      		</p:panel>
+    	  </center>
 	</h:form>
+
+
     </h:body>
 </html>

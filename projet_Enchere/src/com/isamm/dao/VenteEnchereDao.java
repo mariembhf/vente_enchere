@@ -20,16 +20,13 @@ public class VenteEnchereDao {
 	
 	public static void modifierVente_Enchere(VenteEnchere ve){
 		
+		
+		
 		try{
 		    em.getTransaction().begin();
-		    VenteEnchere vente = em.find(VenteEnchere.class, ve.getIdVente_Enchere());
-		    vente.setIdPersonne(ve.getIdPersonne());
-		    vente.setIdProduit(ve.getIdProduit());
-		    vente.setEtat(ve.getEtat());
-		    vente.setPrix_initial(ve.getPrix_initial());
+		    em.merge(ve);
 		    em.getTransaction().commit();
-		  }
-		finally {
+		  } finally {
 		    em.close();
 		    
 		  }
@@ -62,6 +59,13 @@ public class VenteEnchereDao {
 	public static List <VenteEnchere> trouverVENonValide()
 	{
 		Query query = em.createNativeQuery("select * from VenteEnchere v where v.etat='fini' and v.etatVente='nonvalide' ",VenteEnchere.class);
+		List <VenteEnchere> ve =  query.getResultList();
+		return ve;
+	}
+	
+	public static List <VenteEnchere> trouverVEValide()
+	{
+		Query query = em.createNativeQuery("select * from VenteEnchere v where v.etat='fini' and v.etatVente='valide' ",VenteEnchere.class);
 		List <VenteEnchere> ve =  query.getResultList();
 		return ve;
 	}

@@ -73,16 +73,9 @@ public class ProduitDao {
 	public static List<Produit> listProduitsNonEncher(int idPersonne)
 	{
 		
-		//autrement
+		
 		Personne p=em.find(Personne.class, idPersonne);
 		List <Produit> produit= p.getListeProduits();
-		
-		
-		/*
-		Query query = em.createNativeQuery("select * from Produit p where p.etat='nonencher' ",Produit.class);
-		System.out.println(query.toString());
-		List <Produit> produit =  query.getResultList();
-		*/
 		
 		
 		return produit;
@@ -92,6 +85,13 @@ public class ProduitDao {
 	{
 		Query query = em.createNativeQuery("select * from Produit p where p.libelle='"+libelle+"' ",Produit.class);
 		List <Produit> p = query.getResultList();
+		return p;
+	}
+	
+	public static Produit getProduit(int idProd)
+	{
+		Produit p=em.find(Produit.class, idProd);
+		
 		return p;
 	}
 

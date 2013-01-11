@@ -5,8 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Required;
 
@@ -150,6 +152,8 @@ public class Personne implements Serializable {
 			p.setLogin(this.getLogin());
 			p.setPwd(this.getPwd());
 			
+			FacesContext contextF = FacesContext.getCurrentInstance();
+			
 			boolean trouve=false;
 				PersonneDaoImpl pdi=new PersonneDaoImpl();
 				List <Personne> listpersonne = pdi.trouverPersonne(p);
@@ -166,6 +170,8 @@ public class Personne implements Serializable {
 					else
 					{
 						System.out.println("Personne non trouvée");
+						contextF.addMessage("auth:username", new FacesMessage(
+								"login ou mot de passe invalide !!!"));
 						
 					}
 				}

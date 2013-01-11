@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<title></title>
+	<link href="mystyle.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="top" height="120" styleClass="bct_style">
+		  <center>
+			<h:graphicImage id="image1" alt="jsf-sun" url="/images/huissier-ventes.jpg"
+				outputText="Vente Aux Encheres">
+			</h:graphicImage>
+		 </center>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" header="">
+			<center><h:form>
+				<br></br>
+				<br></br>
+				<h:outputText styleClass="title_style"
+					value="Vente des produits aux encheres" />
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<h:panelGrid>
+					<h:panelGrid id="loginPanel" columns="2" bgcolor="White"
+						styleClass="style_panel">
+
+						
+
+					</h:panelGrid>
+				</h:panelGrid>
+
+			</h:form></center>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="bottom" height="120" styleClass="">
+		<h:form>
+		  <center>
+				<h:outputLink  value="Login.xhtml" >Connexion au site</h:outputLink>
+		 </center>
+		 </h:form>
+		</p:layoutUnit>
+		
+	</p:layout>
+</h:body>
+</html>

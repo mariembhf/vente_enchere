@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<title></title>
+	<link href="mystyle.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="top" height="120" styleClass="bct_style">
+		  <center>
+			<h:graphicImage id="image1" alt="jsf-sun" url="/images/huissier-ventes.jpg"
+				outputText="Vente Aux Encheres">
+			</h:graphicImage>
+		 </center>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" header="">
+			<center>
+			
+			
+<h:form id="auth">
+ 				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+ 			<h:panelGrid>
+					<h:panelGrid id="loginPanel" columns="2" bgcolor="White"
+						styleClass="style_panel">
+
+						<h:outputText styleClass="desc" value="Nom d'utilisateur" />
+
+						<p:inputText id="username" styleClass="text medium" value="#{personne.login}" required="true"></p:inputText>
+
+						<p:spacer></p:spacer>
+
+						<p:message for="username"></p:message>
+
+						<h:outputText value="Mot de passe" />
+
+						<p:password id="password" value="#{personne.pwd}" required="false" feedback="true"></p:password>
+
+						<p:spacer></p:spacer>
+
+						<p:message for="password"></p:message>
+
+						<p:spacer></p:spacer>
+
+						<h:commandButton value="Login" action="#{personne.seconnecter}"></h:commandButton>
+						<p:spacer></p:spacer>
+						
+						<p:commandLink id="insc" style="margin-right:20px ;color: RGB(72,120,184)"  onclick="dlg1.show();" >
+							<h:outputText value="Pas encore inscrit?" />
+						</p:commandLink>
+
+					</h:panelGrid>
+				</h:panelGrid>
+	
+</h:form>
+
+<h:form>
+	<center>	 
+	<p:dialog id="modalDialog"  draggable="false" resizable="false" header="Inscription" widgetVar="dlg1" height="220" width="500">
+	
+        
+        	<h:panelGrid id="loginPanel" columns="2" bgcolor="White" >
+
+						<h:outputText  value="Nom d'utilisateur" />
+						<p:inputText id="name" value="#{personne.nom}"></p:inputText>
+						
+						<h:outputText  value="Login" />
+						<p:inputText id="login" value="#{personne.login}"></p:inputText>
+						
+
+						<h:outputText value="Mot de passe" />
+						<p:password id="password" value="#{personne.pwd}"  feedback="true"></p:password>
+
+						
+						<h:outputText value="Adresse" />
+						<p:inputText id="adresse" value="#{personne.adresse}"></p:inputText>
+						
+						<h:outputText value="Mail" />
+						<p:inputText id="mail" value="#{personne.mail}"></p:inputText>
+						
+
+						<p:spacer></p:spacer>
+						<h:commandButton value="inscription" action="#{personne.inscrir}" ></h:commandButton>
+
+					</h:panelGrid>
+           
+      
+		</p:dialog>
+		
+		
+		</center>
+
+</h:form>
+			
+			
+			</center>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="bottom" height="120" styleClass="">
+		
+		</p:layoutUnit>
+		
+	</p:layout>
+</h:body>
+</html>

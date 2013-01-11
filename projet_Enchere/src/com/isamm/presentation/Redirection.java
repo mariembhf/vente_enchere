@@ -39,9 +39,9 @@ else if (selectedPageViewId.equalsIgnoreCase("Compte"))
 {
 includedPage = "/Authentification.xhtml";
 }
-else if (selectedPageViewId.equalsIgnoreCase("Aide"))
+else if (selectedPageViewId.equalsIgnoreCase("Contact"))
 {
-includedPage = "/Aide.xhtml";
+includedPage = "/Contact.xhtml";
 }
 else if (selectedPageViewId.equalsIgnoreCase("Rechercher"))
 {

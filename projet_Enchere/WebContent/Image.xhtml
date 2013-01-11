@@ -11,18 +11,36 @@
 <h:body>
 
 	
-	<h:form id="form1">
+	<h:form>
 	
 	
-	
-		<p:dataTable id="tableProduit">
-			<p:column>	
-				<f:facet name="header">
-					<h:outputText value="Status" />
-				</f:facet>
-				<p:graphicImage value="/images/img.png" />
-			</p:column>
-		</p:dataTable>
+		
+
+	<h3>Custom Content</h3>
+	<p:galleria id="contentGalleria" value="#{galleriaBean.players}" var="player" panelWidth="250" panelHeight="200"
+            frameWidth="48" frameHeight="65" effect="clip">
+
+    <p:graphicImage id="playerImage" value="/images/barca/#{player.image}" alt="#{image}" title="#{player.name}"/>
+    <f:facet name="content">
+        <h:panelGrid  columns="2" cellpadding="5">
+            <f:facet name="header">
+                <p:graphicImage value="/images/#{player.photo}" />
+            </f:facet>
+
+            <h:outputText value="Name: " />
+            <h:outputText id="name" value="#{player.name}"/>
+
+            <h:outputText value="Number " />
+            <h:outputText id="number" value="#{player.number}"/>
+
+            <h:outputText value="Position " />
+            <h:outputText id="position" value="#{player.position}"/>
+        </h:panelGrid>
+    </f:facet>
+
+</p:galleria>
+                    
+		
 		
 	</h:form>
 	

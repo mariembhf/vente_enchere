@@ -10,7 +10,7 @@
 
 <h:body>
 
-	<h:form id="achat">
+	<h:form>
 		
 		<center><br></br>
 		<br></br>
@@ -41,12 +41,12 @@
 				
                 <p:column>
 				    <f:facet name="header">Date début</f:facet>
-					<p:calendar value="#{r.date_deb}" readonly="true" ></p:calendar>
+					<p:calendar value="#{r.date_deb}" readonly="true" disabled="true"></p:calendar>
 				</p:column>
 
 				<p:column>
 				    <f:facet name="header">Date fin</f:facet>
-					<p:calendar value="#{r.date_fin}" readonly="true"></p:calendar>
+					<p:calendar value="#{r.date_fin}" readonly="true" disabled="true"></p:calendar>
 				</p:column>
 
 
@@ -60,14 +60,14 @@
 					
 				</p:column>
 
-				<p:column>
+	<!--  			<p:column>
 				    <f:facet name="header">Valider</f:facet>
 					
-					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)"  >
+					<p:commandLink id="encher" style="margin-right:20px ;color: RGB(72,120,184)" action="#{venteenchere.ValiderEnchere(r)}" >
 						<h:outputText value="Valider" />
 					</p:commandLink>
 					
-				</p:column>
+				</p:column> -->
 
 				
 
@@ -76,6 +76,8 @@
 		
 			</h:panelGrid>
 		</p:panel>
+		<h:commandButton value="valider" action="#{venteBean.validerEnchere}"></h:commandButton>
+		
 		</center>
 	</h:form>
 	
@@ -94,7 +96,7 @@
 						<p:inputText id="nomClient" readonly="true" value="#{atenchere.nomEnchereur}"></p:inputText>
 						
 						<h:outputText  value="Quantité " />
-						<p:inputText id="nomClient" readonly="true" value="#{atenchere.quantite}"></p:inputText>
+						<p:inputText id="quantite" readonly="true" value="#{atenchere.quantite}"></p:inputText>
 						
 						
 						<h:outputText  value="Prix de vente " />
